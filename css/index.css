@@ -1,0 +1,179 @@
+:root {
+            --primary-color: #2A64F2; /* Un azul moderno */
+            --secondary-color: #F4F7FC; /* Un gris claro para fondos */
+            --dark-color: #121F3A; /* Texto oscuro */
+            --light-color: #FFFFFF; /* Texto claro */
+            --gray-color: #6B7280; /* Texto secundario */
+         }
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+/* --- Utilidades y Contenedor --- */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- Cabecera --- */
+.cabecera {
+    background-color: var(--light-color);
+    padding: 16px 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.cabecera .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--gray-color);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Sección intro --- */
+.intro {
+    background-color: var(--secondary-color);
+    padding: 64px 0;
+    text-align: center;
+}
+
+.intro h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    color: var(--dark-color);
+}
+
+.intro p {
+    font-size: 18px;
+    color: var(--gray-color);
+    max-width: 600px;
+    margin: 0 auto 32px auto;
+}
+
+.botones_primarios {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 29px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-primario {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.btn-primario:hover {
+    transform: translateY(-6px);
+    background-color: #1E4FD3;
+}
+
+/* --- Sección de Características --- */
+.características {
+    padding: 64px 0;
+}
+
+.características h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 48px;
+}
+
+.características-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.características-tarjetas {
+  background-color: var(--light-color);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.características-tarjetas:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.características-tarjetas h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+}
+
+/* Oculta el párrafo por defecto */
+.características-tarjetas p {
+  color: var(--gray-color);
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Muestra el texto al pasar el mouse */
+.características-tarjetas.mostrar p {
+  opacity: 1;
+  max-height: 200px;
+  margin-top: 15px;
+}
+
+
+
+/* --- Pie de Página --- */
+.footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 32px 0;
+    text-align: center;
+}
+
+.footer p {
+    color: #A9B4CC;
+}
+

@@ -1,0 +1,83 @@
+
+
+
+main{
+    background-color: rgb(169, 255, 226);
+    
+    
+   
+}
+.container{    
+    display: flex;
+    align-items: center;/*centra verticalmente*/
+    justify-content: center;    /*centra horizontalmente*/
+  
+}
+.form-box{
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    display: none;
+    margin: 100px;
+
+}
+.form-box.active{
+    display: block;
+}
+
+.titulo{
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+input,button,select{
+    height: 50px;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 10px;
+    margin-bottom: 20px;
+    border: 2px solid grey;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;/*quita el overflow de las cajas*/
+}
+
+button{
+    margin-top: 20px;
+     background-color: rgba(114, 214, 214, 0.158);
+    border: none;
+    font-weight: bold;
+}
+button:hover{
+     background-color: rgba(57, 109, 109, 0.158);
+}
+.register{
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.error-message{
+    padding: 12px;
+    background: white;
+    border-radius: 6px;
+    font-size: 16px;
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.error-message.active{
+    display: block;
+}
