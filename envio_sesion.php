@@ -7,6 +7,7 @@ if(isset($_POST['registro'])){
     $email=$_POST['email'];
     $password=password_hash($_POST['password'],PASSWORD_DEFAULT);
     $role=$_POST['role'];
+    $direccion=$_POST['direccion'];
 
     $comprobarEmail=$conn -> query("SELECT email FROM users WHERE email ='$email'");
     if($comprobarEmail -> num_rows>0){
@@ -15,7 +16,7 @@ if(isset($_POST['registro'])){
         $_SESSION['active_form']='register';
 
     } else {
-        $conn->query("INSERT INTO users (nombre, apellidos, email, password, role) VALUES ('$nombre','$apellidos', '$email', '$password', '$role')");
+        $conn->query("INSERT INTO users (nombre, apellidos, email, password, role, direccion) VALUES ('$nombre','$apellidos', '$email', '$password', '$role', '$direccion')");
     }
     header("location:index.php");
     exit();

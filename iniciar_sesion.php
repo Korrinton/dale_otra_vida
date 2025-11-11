@@ -37,6 +37,7 @@ function isActiveForm($formName,$activeForm){
         <input type="text" id="nombre" name="nombre" placeholder="nombre">
         <input type="text" id="apellidos" name="apellidos" placeholder="apellidos">
         <input type="email" id="email" name="email" placeholder="Email">
+        <input type="text" id="direccion" name="direccion" placeholder="Dirección">
         <input type="password" id="password" name="password"  placeholder="contaseña">
         <input type="password" id="password_repetir" name="password_repetir"  placeholder="repetir contaseña">
         <div id="error-password" class='error-message'>Las contraseñas no coinciden.</div>
