@@ -1,2 +1,2 @@
 # Ignore local database files and sockets
-db-data-local/
+db_data_local/

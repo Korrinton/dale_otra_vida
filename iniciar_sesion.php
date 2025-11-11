@@ -10,7 +10,7 @@ $errors=[
 
 $activeForm=$_SESSION['active_form'] ?? 'login';
 
-session_unset();
+
 
 function showError($error){
     return !empty($error)?"<p class='error-message'>$error</p>":'';
@@ -24,15 +24,15 @@ function isActiveForm($formName,$activeForm){
 <div class="container" >
     <form method="POST" action="envio_sesion.php" class='form-box <?= isActiveForm('login',$activeForm);?>' id="login-form">
         <legend class="titulo">Login</legend>
-        <input type="email" id="email" name="email" placeholder="Email">
-        <input type="password" id="password" name="password"  placeholder="contaseña">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password"  placeholder="contaseña">
         <button type="submit" name="login">Login</button>
         <div>
             <p class="registro">¿No tiene cuenta?  <a href="#" onclick="showForm('register-form')">Cree una cuenta</a></p>
         </div>
-        </form>
+    </form>
     
-        <form method="POST" action="envio_sesion.php"  class='form-box <?= isActiveForm('registro',$activeForm);?>' id="register-form">
+    <form method="POST" action="envio_sesion.php" class='form-box <?= isActiveForm('registro',$activeForm);?>' id="register-form">
         <legend class="titulo">Registro</legend>
         <input type="text" id="nombre" name="nombre" placeholder="nombre">
         <input type="text" id="apellidos" name="apellidos" placeholder="apellidos">
@@ -41,15 +41,18 @@ function isActiveForm($formName,$activeForm){
         <input type="password" id="password_repetir" name="password_repetir"  placeholder="repetir contaseña">
         <div id="error-password" class='error-message'>Las contraseñas no coinciden.</div>
         <input type="text" id="direccion" name="direccion" placeholder="dirección">
-        <button type="submit" name="register">register</button>
+        <button type="submit" name="registro">register</button>
         <div>
             <p class="register">¿Tiene una cuenta? <a href="#" onclick="showForm('login-form')">Inicie sesion</a></p>
         </div>
-</form>
+    </form>
 </div>
 <script src="./js/iniciar_sesion.js"></script>
 
 <?php
-
+unset($_SESSION['errores_registro']);
+unset($_SESSION['error']);
+unset($_SESSION['active_form']);
 require_once('footer.php');
+
 ?>
