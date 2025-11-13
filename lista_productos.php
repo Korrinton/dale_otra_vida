@@ -1,12 +1,12 @@
 <?php
     session_start(); 
-    /* 
-    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    
+    if (!isset($_SESSION['loggeado']) || $_SESSION['loggeado'] !== true) {
         // Si no está logeado, lo redirige a la página de inicio
         header("Location: index.php"); 
-    exit;
-    }
-   */
+        exit;
+    } 
+   
 
     $titulo_pagina = "Productos";
      include_once('header.php');
