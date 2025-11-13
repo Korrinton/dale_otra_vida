@@ -1,11 +1,11 @@
 <?php
 session_start();
 include_once("header.php");
-
+$titulo="home";
 
 $errors=[
-    'login'-> $_SESSION['login_eror'] ?? '',
-    'register'-> $_SESSION['register_error'] ?? ''
+    'login'-> $_SESSION['errores_registro'] ?? '',
+    'register'-> $_SESSION['error'] ?? ''
 ];
 
 $activeForm=$_SESSION['active_form'] ?? 'login';
@@ -37,10 +37,10 @@ function isActiveForm($formName,$activeForm){
         <input type="text" id="nombre" name="nombre" placeholder="nombre">
         <input type="text" id="apellidos" name="apellidos" placeholder="apellidos">
         <input type="email" id="email" name="email" placeholder="Email">
-        <input type="text" id="direccion" name="direccion" placeholder="Dirección">
         <input type="password" id="password" name="password"  placeholder="contaseña">
         <input type="password" id="password_repetir" name="password_repetir"  placeholder="repetir contaseña">
         <div id="error-password" class='error-message'>Las contraseñas no coinciden.</div>
+        <input type="text" id="direccion" name="direccion" placeholder="dirección">
         <button type="submit" name="register">register</button>
         <div>
             <p class="register">¿Tiene una cuenta? <a href="#" onclick="showForm('login-form')">Inicie sesion</a></p>
