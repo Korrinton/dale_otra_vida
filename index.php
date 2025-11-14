@@ -4,6 +4,18 @@ include_once("header.php");
 ?>
 
 <main>
+    <?php if (!$logueado): ?>
+        <section class="intro">
+            <div class="container principal">
+                <h1>Panel de Administrador</h1>
+                <p>Bienvenido al panel de gestión.</p>
+                <div class="botones-admin">
+                    <a href="historial_reparaciones.php" class="btn btn-primario">Historial de Reparaciones</a>
+                    <a href="historial_alquileres.php" class="btn btn-primario">Historial de Alquileres</a>
+                </div>
+            </div>
+    </section>
+    <?php else: ?>
     <section class="intro">
         <div class="container principal">
             <h1>Ayuda a la reducción de tu huella de carbón</h1>
@@ -40,6 +52,7 @@ include_once("header.php");
         </div>
     </section>
     <script src="./js/index.js"></script>
+    <?php endif; ?>
 </main>
 
 <?php
