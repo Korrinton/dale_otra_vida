@@ -28,7 +28,7 @@ function sesion(){
 <body>
 <header class="cabecera">
         <div class="container">
-            <div class="logo">Dale otra vida</div>
+            <div class="logo"><a href="./index.php"> Dale otra vida</a></div>
             <p><?mostrarNombre()?></p>
             <nav class="nav">
                 <ul>

@@ -1,16 +1,14 @@
 <?php
 session_start();
 include_once("header.php");
-
 // Si no está logueado, redirigir al login
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['loggeado']) || $_SESSION['loggeado'] !== true) {
     $_SESSION['active_form'] = 'login';
     $_SESSION['login_eror'] = 'Debes iniciar sesión para poner productos en alquiler';
     header('Location: iniciar_sesion.php');
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
 ?>
 
 <link rel="stylesheet" href="./css/iniciar_sesion.css">

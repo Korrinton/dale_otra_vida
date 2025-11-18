@@ -9,7 +9,7 @@ include_once("header.php");
             <h1>Ayuda a la reducción de tu huella de carbón</h1>
             <p>La web definitiva para buscar, encontrar y gestionar el alquiler o la compra de aparatos electrónicos. Fácil, rápido y seguro.</p>
             <div class="botones_primarios">
-                <a href="./formulario.html" class="btn btn-primario">Vende tu movil</a>
+                <a href="./formulario_alquiler.php" class="btn btn-primario">Vende tu movil</a>
                 <a href="#" class="btn btn-primario">Tablets disponibles</a>
                 <a href="#" class="btn btn-primario">Ofertas para empresas</a>
             </div>
@@ -33,7 +33,6 @@ include_once("header.php");
                 <section class="características-tarjetas">
                     <h3>¿Te gusta? cómpratelo</h3>
                     <p>Nuestro alquiler con opción a compra permite que si quieres seguir con el móvil que has alquilado 
-
                     </p>
                 </section>
             </div>
