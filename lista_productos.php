@@ -1,10 +1,11 @@
 <?php
     session_start(); 
-    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    
+    if (!isset($_SESSION['loggeado']) || $_SESSION['loggeado'] !== true) {
         // Si no está logeado, lo redirige a la página de inicio
         header("Location: index.php"); 
-    exit;
-    }
+        exit;
+    } 
    
 
     $titulo_pagina = "Productos";
@@ -21,7 +22,7 @@
 <?php
     include_once('config_db.php');
 
-    $sql = "SELECT aparato_id, tipo_aparato, nombre, marca, precio, estado_reacondicionado, imagen FROM productos WHERE alquilado=True";
+    $sql = "SELECT aparato_id, tipo_aparato, nombre, marca, precio, estado_reacondicionado, imagen FROM aparato_electronico WHERE alquilado=True";
     //puntero, objeto resultado
     $resultado = $conn->query($sql);
     //guardamos los resultados en un array

@@ -1,4 +1,4 @@
-version: '3.9'
+
 
 services:
   web:
@@ -11,8 +11,6 @@ services:
       - "8080:80"
     depends_on:
       - db
-    networks:
-      - my_network
 
   db:
     image: mysql:8.0
@@ -20,18 +18,15 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: testdb
+      MYSQL_DATABASE: dale_otra_vida
       MYSQL_USER: user
       MYSQL_PASSWORD: password
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     ports:
       - "3306:3306"
     volumes:
-      - ./db_data_local:/var/lib/mysql       # Tus datos existentes se conservan
-      - ./mysql_conf/my.cnf:/etc/mysql/my.cnf:ro
-    networks:
-      - my_network
-
+      - ./db_data_local:/var/lib/mysql
+      
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
@@ -41,11 +36,6 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: root
-    depends_on:
-      - db
-    networks:
-      - my_network
 
-networks:
-  my_network:
-    driver: bridge
+volumes:
+  db_data:

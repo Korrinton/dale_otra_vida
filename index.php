@@ -1,27 +1,15 @@
 <?php
+session_start();
 include_once("header.php");
-
 ?>
 
 <main>
-    <?php if (!$logueado): ?>
-        <section class="intro">
-            <div class="container principal">
-                <h1>Panel de Administrador</h1>
-                <p>Bienvenido al panel de gestión.</p>
-                <div class="botones-admin">
-                    <a href="historial_reparaciones.php" class="btn btn-primario">Historial de Reparaciones</a>
-                    <a href="historial_alquileres.php" class="btn btn-primario">Historial de Alquileres</a>
-                </div>
-            </div>
-    </section>
-    <?php else: ?>
     <section class="intro">
         <div class="container principal">
             <h1>Ayuda a la reducción de tu huella de carbón</h1>
             <p>La web definitiva para buscar, encontrar y gestionar el alquiler o la compra de aparatos electrónicos. Fácil, rápido y seguro.</p>
             <div class="botones_primarios">
-                <a href="./formulario.html" class="btn btn-primario">Vende tu movil</a>
+                <a href="./formulario_alquiler.php" class="btn btn-primario">Vende tu movil</a>
                 <a href="#" class="btn btn-primario">Tablets disponibles</a>
                 <a href="#" class="btn btn-primario">Ofertas para empresas</a>
             </div>
@@ -45,14 +33,12 @@ include_once("header.php");
                 <section class="características-tarjetas">
                     <h3>¿Te gusta? cómpratelo</h3>
                     <p>Nuestro alquiler con opción a compra permite que si quieres seguir con el móvil que has alquilado 
-
                     </p>
                 </section>
             </div>
         </div>
     </section>
     <script src="./js/index.js"></script>
-    <?php endif; ?>
 </main>
 
 <?php
