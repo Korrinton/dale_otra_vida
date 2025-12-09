@@ -1,41 +1,46 @@
-
+version: '3.8'
 
 services:
-  web:
-    build: .
-    container_name: php-apache
-    user: 1001:1002
+  # Servicio 1: Contenedor de la Aplicación Laravel (WEB con PHP y Apache)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - .:/var/www/html
     ports:
       - "8080:80"
+    environment:
+      # ... (variables de DB)
     depends_on:
       - db
 
+  # Servicio 2: Contenedor de la Base de Datos (DB)
   db:
     image: mysql:8.0
-    container_name: mysql-db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: dale_otra_vida
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    ports:
-      - "3306:3306"
     volumes:
-      - ./db_data_local:/var/lib/mysql
-      
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    restart: always
-    ports:
-      - "8081:80"
+      - dbdata:/var/lib/mysql
     environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    restart: always
+
+  # Servicio 3: phpMyAdmin para gestionar la base de datos
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    # Mapea el puerto 80 del phpMyAdmin al puerto 8081 en tu máquina local
+    ports:
+      - '8081:80'
+    environment:
+      # CRUCIAL: Debe usar el nombre del servicio de la DB ('db')
+      PMA_HOST: db 
+      # Usar el mismo usuario y contraseña que definiste para el servicio 'db'
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - db
 
 volumes:
-  db_data:
+  dbdata:
+    driver: local
