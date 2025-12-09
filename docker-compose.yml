@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   # Servicio 1: Contenedor de la Aplicación Laravel (WEB con PHP y Apache)
@@ -11,7 +10,10 @@ services:
     ports:
       - "8080:80"
     environment:
-      # ... (variables de DB)
+      DB_HOST: db                   
+      DB_DATABASE: ${DB_DATABASE}    
+      DB_USERNAME: ${DB_USERNAME}    
+      DB_PASSWORD: ${DB_PASSWORD}    
     depends_on:
       - db
 

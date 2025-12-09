@@ -1,5 +1,5 @@
 # Usa una imagen base de PHP con Apache
-FROM php:8.2-apache
+FROM php:8.4-apache
 
 # Instala extensiones de PHP que Laravel necesita
 RUN apt-get update && \
@@ -8,24 +8,26 @@ RUN apt-get update && \
 
 # Habilita el módulo de reescritura de Apache (para rutas bonitas de Laravel)
 RUN a2enmod rewrite
-
+# Copia la configuración personalizada para apuntar a la carpeta 'public'
+COPY docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /var/www/html
 
-# Copia los archivos de configuración de composer para la capa de caché
+# 1. Copia los archivos de configuración de composer para la capa de caché
 COPY composer.json composer.lock ./
 
-# Instala Composer (si no está ya en la imagen base)
+# 2. Copia Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Instala las dependencias de Laravel
-# Este paso fallará si no has copiado 'artisan' (verás el error 'Could not open input file: artisan')
-# Por eso, es mejor copiar los archivos de la app antes de composer install.
-# Para evitar el problema anterior, puedes instalar solo las dependencias aquí
+# 3. ¡CORRECCIÓN! Copia el resto del código fuente (incluyendo 'artisan') AHORA
+# Esto asegura que 'artisan' esté presente para el script de post-instalación de Composer.
+COPY . .
+
+# 4. Instala las dependencias de Laravel
+# Este paso ahora encontrará 'artisan' y NO fallará.
 RUN composer install --no-dev --prefer-dist --optimize-autoloader
 
-# Copia el resto del código fuente de la aplicación al contenedor
-COPY . .
+# --- FIN DE LA SECCIÓN CRÍTICA ---
 
 # Ajusta permisos (importante para Laravel, especialmente para storage y bootstrap/cache)
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
